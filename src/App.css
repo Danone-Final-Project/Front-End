@@ -52,3 +52,16 @@
   font-size: 28px;
   font-weight: 600!important;
 }
+
+.judulsatu {
+  text-align: left;
+  font-size: large;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.judulsatudua{
+  text-align: left;
+  font-size: medium;
+  font-weight: 100;
+}
