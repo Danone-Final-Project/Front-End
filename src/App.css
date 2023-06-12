@@ -1,0 +1,73 @@
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.mainNavbar{
+  background-color: #0081C9;
+}
+
+.brandlink{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.navlink{
+  text-decoration: none;
+  color: white;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+.caption {
+  color: #0081C9;
+  font-size: 40px;
+  font-weight: 600!important;
+  margin-top: 16px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.card {
+  margin: 16px; 
+  border-radius: 10px;
+  border: none!important;
+  box-shadow: 0px 0px 5px black;
+
+}
+
+.card .card-img {
+  border-radius: 15px;
+  height: 200px;
+  object-fit: cover;
+  
+}
+
+.text-center {
+  margin: 10px 100px 10px 100px;
+  font-size: 18px;
+}
+
+.text-center2 {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.tengah-primary {
+  margin-top: 100px;
+  color: #0081C9;
+  font-size: 28px;
+  font-weight: 600!important;
+}
