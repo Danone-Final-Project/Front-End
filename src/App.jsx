@@ -11,7 +11,9 @@ import DietLima from '../src/components/DietLima';
 import Login from './components/login';
 import BMICalculator from './components/BMICalculator';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './homepage.css';
 import './style.css';
+
 
 
 function App() {

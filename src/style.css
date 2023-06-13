@@ -1,5 +1,6 @@
-body{
+html, body{
   font-family: 'Poppins', sans-serif;
+  width: 100vw;
 }
 
 .mainNavbar{
@@ -100,4 +101,8 @@ body{
 
 .img{
   width: 25rem;
+}
+
+.hero-heading{
+  font-size: 3.5rem;
 }
