@@ -10,10 +10,13 @@ function Home (){
       <Hero />
       <About />
       <Layanan />
-      <div className="d-flex flex-row">
-        <ArticleCard />
-      </div>
-      <Footer />
+        <section className="mb-5 about">
+          <h2 className="title">Artikel</h2>
+          <p className="content">Untuk informasi lebih lanjut tentang diet, Anda dapat membaca artikel di bawah ini</p>
+          <div className="d-flex flex-row card-container">
+            <ArticleCard />
+          </div>
+        </section>
     </>
     
   )
