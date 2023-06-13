@@ -2,9 +2,9 @@ $(document).ready(function(){
     $(window).scroll(function(){
         // sticky navbar on scroll script
         if(this.scrollY > 20){
-            $('.mainNavbar').addClass("sticky");
+            $('.navbar').addClass("sticky");
         }else{
-            $('.mainNavbar').removeClass("sticky");
+            $('.navbar').removeClass("sticky");
         }
         
         // scroll-up button show/hide script
@@ -29,7 +29,7 @@ $(document).ready(function(){
 
     // toggle menu/navbar script
     $('.menu-btn').click(function(){
-        $('.mainNavbar .menu').toggleClass("active");
+        $('.navbar .menu').toggleClass("active");
         $('.menu-btn i').toggleClass("active");
     });
 });
