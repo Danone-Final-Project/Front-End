@@ -71,6 +71,11 @@ body{
 
 }
 
+.cardtitle {
+  font-size: larger;
+  font-weight: 700;
+}
+
 .card .card-img {
   border-radius: 15px;
   height: 200px;
