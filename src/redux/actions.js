@@ -32,10 +32,10 @@ export const calculateBMI = async (height, weight) => {
       });
       const food = response.data;
       const filteredFood = food.filter(food => food.calLevel.level === level);
-      console.log("success");
-      console.log(filteredFood);
+      // console.log("success");
+      // console.log(filteredFood);
       foodRecommendation = filteredFood;
-      console.log(foodRecommendation);
+      // console.log(foodRecommendation);
 
     } catch (error) {
       console.log('Error fetching food recommendation:', error);

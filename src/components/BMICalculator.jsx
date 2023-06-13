@@ -27,7 +27,10 @@ function BMICalculator() {
     setRecommendation(calculatedRecommendation);
   };
 
+  const isRecommendationValid = Array.isArray(recommendation) && recommendation.length > 0;
+
   const extractFoodItems = () => {
+    if(isRecommendationValid){
       if (recommendation[0] && typeof recommendation[0] === 'object') {
         return recommendation.map(food => {
           const {name, calory, proteins, carbo, fat, carbon, img, category} = food;
@@ -35,9 +38,16 @@ function BMICalculator() {
         });
       }
       return [recommendation];
+    }
+    return[];
+      
   };
 
   const foodItems = extractFoodItems();
+
+  const categoryStyle = {
+    color: category === 'Ideal' ? '#516B06' : '#E0291F',
+  };
 
   return (
     <div>
@@ -59,14 +69,14 @@ function BMICalculator() {
         <Button onClick={handleCalculateBMI}>Calculate BMI</Button>
         {bmi && (
           <div className='d-flex flex-column justify-content-center align-items-center mt-3'>
-            <p className='fw-bold fs-3 m-0'>BMI: {bmi}</p>
-            <p className='fw-semibold fs-4 m-0'>Berat: {category}</p>
-            {recommendation && (
+            <p className='fw-semibold fs-3 m-0'>BMI: <span className='fw-bold' style={categoryStyle}>{bmi}</span></p>
+            <p className='fw-semibold fs-4 m-0'>Berat: <span className='fw-bold' style={categoryStyle}>{category}</span></p>
+            {isRecommendationValid && (
             <div className='d-flex flex-column mt-4'>
-              <h3 className='text-center fs-2'>Food Recommendation</h3>
-              <div className='d-flex flex-row justify-content-center'>
+              <h3 className='text-center fs-2 food-rec'>Food Recommendation</h3>
+              <div className='d-flex flex-row justify-content-center mb-3'>
                 {foodItems.map((food, index) => (
-                  <Card key={index}>
+                  <Card className='card-makanan' key={index}>
                     <Card.Img variant="top" src={food.img} fluid/>
                     <Card.Body>
                       <Card.Title className="fw-semibold mb-2">
