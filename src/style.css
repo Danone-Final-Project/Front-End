@@ -402,3 +402,11 @@ footer span a {
 footer span a:hover {
   text-decoration: underline;
 }
+
+.login-btn{
+  background-color: #0081C9;
+}
+
+.join-btn{
+  color: #0081C9;
+}
