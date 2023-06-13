@@ -1,5 +1,6 @@
 import Article from './components/Article';
 import ArticleCard from './components/ArticleCard';
+import Navbar from './components/Navbar';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import DietSatu from '../src/components/DietSatu';
@@ -13,8 +14,13 @@ import DietLima from '../src/components/DietLima';
 
 const App = () => {
   return (
+    <div>
+        <Navbar />
+        <Routes>
+          <Route path='/article' element={<Article />} />
+        </Routes>
+
     <div className="App">
-      <Article />
       <div className="card-container">
         <ArticleCard />
     </div>
@@ -25,7 +31,7 @@ const App = () => {
         <Route path="/diet-empat" Component={DietEmpat} />
         <Route path="/diet-lima" Component={DietLima} />
       </Routes>
-
+    </div>
     </div>
   );
 };
