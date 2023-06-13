@@ -49,4 +49,8 @@ const ArticleCard = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ArticleCard;
+=======
+export default ArticleCard;
+>>>>>>> 392ba0ab350017e70533b2f49be6480cc250ba14
