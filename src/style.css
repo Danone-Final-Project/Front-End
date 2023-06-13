@@ -20,3 +20,53 @@ body{
   font-size: 2rem;
   color: #334155;
 }
+
+.caption {
+  color: #0081C9;
+  font-size: 40px;
+  font-weight: 600 !important;
+  margin-top: 16px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.card {
+  margin: 16px;
+  border-radius: 10px;
+  border: none !important;
+  box-shadow: 0px 0px 5px black;
+  width: 14rem;
+
+}
+
+.card .card-img {
+  border-radius: 15px;
+  height: 200px;
+  object-fit: cover;
+
+}
+
+.text-center {
+  margin: 10px 100px 10px 100px;
+  font-size: 18px;
+}
+
+.text-center2 {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.tengah-primary {
+  color: #0081C9;
+  font-size: 28px;
+  font-weight: 600 !important;
+}
+
+.img{
+  width: 25rem;
+}
