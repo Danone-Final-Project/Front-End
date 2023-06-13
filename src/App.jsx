@@ -11,7 +11,10 @@ import DietLima from '../src/components/DietLima';
 import Login from './components/login';
 import BMICalculator from './components/BMICalculator';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './homepage.css';
 import './style.css';
+import Footer from './components/footer';
+
 
 
 function App() {
@@ -33,6 +36,7 @@ function App() {
           <Route path="/diet-lima" element={<DietLima />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }
