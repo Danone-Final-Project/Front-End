@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Button } from 'react-bootstrap';
 
 function navBar() {
   return (
@@ -19,8 +20,9 @@ function navBar() {
         </Nav>
       </div>
       <div>
-        <Nav>
-          <Nav.Link><Link className='navlink' to="/login">Login</Link></Nav.Link>
+        <Nav className='justify-content-center'>
+          <Nav.Link><Link className='navlink' to="/login"><Button className='btn btn-outline-light login-btn'>Login</Button></Link></Nav.Link>
+          <Nav.Link><Link className='navlink' to="/login"><Button className='btn btn-light join-btn'>Join</Button></Link></Nav.Link>
         </Nav>
       </div>
     </Navbar>
