@@ -36,27 +36,57 @@ body{
 }
 
 .card {
-  margin: 16px;
+  margin: 16px; 
   border-radius: 10px;
-  border: none !important;
+  border: none!important;
   box-shadow: 0px 0px 5px black;
-  width: 14rem;
 
+}
+
+.cardtitle {
+  font-size: larger;
+  font-weight: 700;
 }
 
 .card .card-img {
   border-radius: 15px;
   height: 200px;
   object-fit: cover;
+  
+}
 
+.judulcard {
+  margin-top: 20px;
+}
+
+.judulsatu {
+  text-align: left;
+  font-size: large;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.judulsatudua{
+  text-align: left;
+  font-size: medium;
+  font-weight: 300;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .text-center {
-  margin: 10px 100px 10px 100px;
+  margin: 20px 100px 20px 100px;
   font-size: 18px;
 }
 
 .text-center2 {
+  margin-bottom: 100px;
   font-weight: 600;
   font-size: 18px;
 }
