@@ -26,11 +26,11 @@ function App() {
         </Routes>
         <div>
         <Routes>
-          <Route path="/diet-satu" Component={DietSatu} />
-          <Route path="/diet-dua" Component={DietDua} />
-          <Route path="/diet-tiga" Component={DietTiga} />
-          <Route path="/diet-empat" Component={DietEmpat} />
-          <Route path="/diet-lima" Component={DietLima} />
+          <Route path="/diet-satu" element={<DietSatu />} />
+          <Route path="/diet-dua" element={<DietDua />} />
+          <Route path="/diet-tiga" element={<DietTiga />} />
+          <Route path="/diet-empat" element={<DietEmpat />} />
+          <Route path="/diet-lima" element={<DietLima />} />
         </Routes>
       </div>
     </div>
