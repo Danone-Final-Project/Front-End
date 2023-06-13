@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { calculateBMI } from '../redux/actions';
 import Image from 'react-bootstrap/Image';
 import bmiImage from '../assets/img/BMI.png';
@@ -9,8 +9,9 @@ import { Button } from 'react-bootstrap';
 function BMICalculator() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const bmi = useSelector((state) => state.bmi);
-  const dispatch = useDispatch();
+  const [bmi, setBMI] = useState('');
+  const [category, setCategory] = useState('');
+  const [recommendation, setRecommendation] = useState('');
 
   const handleHeightChange = (event) => {
     setHeight(event.target.value);
@@ -20,18 +21,11 @@ function BMICalculator() {
     setWeight(event.target.value);
   };
 
-  const handleCalculateClick = () => {
-    dispatch(calculateBMI(height, weight));
-  };
-
-  const getCategory = () => {
-    if (bmi < 18.5) {
-      return 'Underweight';
-    } else if (bmi >= 18.5 && bmi <= 24.9) {
-      return 'Ideal';
-    } else {
-      return 'Overweight';
-    }
+  const handleCalculateBMI = async () => {
+    const { bmi: calculatedBMI, category: calculatedCategory, recommendation: calculatedRecommendation } = await calculateBMI(height, weight);
+    setBMI(calculatedBMI);
+    setCategory(calculatedCategory);
+    setRecommendation(calculatedRecommendation);
   };
 
   return (
@@ -42,7 +36,7 @@ function BMICalculator() {
       </div>
       <Form className='d-flex justify-content-center gap-5 my-3'>
         <Form.Group>
-          <Form.Label>Tinggi (m):</Form.Label>
+          <Form.Label>Tinggi (cm):</Form.Label>
           <Form.Control type="text" value={height} onChange={handleHeightChange} />
         </Form.Group>
         <Form.Group>
@@ -51,11 +45,12 @@ function BMICalculator() {
         </Form.Group>
       </Form>
       <div className='d-flex flex-column justify-content-center align-items-center my-4'>
-        <Button onClick={handleCalculateClick}>Calculate BMI</Button>
+        <Button onClick={handleCalculateBMI}>Calculate BMI</Button>
         {bmi && (
           <div className='d-flex flex-column justify-content-center align-items-center mt-3'>
             <p className='fw-bold fs-3 m-0'>BMI: {bmi}</p>
-            <p className='fw-semibold fs-4 m-0'>Berat: {getCategory()}</p>
+            <p className='fw-semibold fs-4 m-0'>Berat: {category}</p>
+            {recommendation && <p>Food Recommendation: {recommendation}</p>}
           </div>
         )}
       </div>
