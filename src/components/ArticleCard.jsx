@@ -1,61 +1,60 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import HeartIcon from './HeartIcon';
 
+function ArticleCard({ article }) {
+  return (
+    
+      <Card className='card-makanan card-dimension'>
+        <Card.Body>
+          <HeartIcon />
+          <Card.Title className='d-flex justify-content-center'>
+            {article.title}
+          </Card.Title>
+          <Card.Text className='my-3'>
+            {article.desc}
+          </Card.Text>
+          <Card.Text className='my-5'>
+            <Link to={`/article/${article._id}`}>
+              <a className='position-absolute bottom-0 py-2'>Selengkapnya...</a>
+            </Link>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    
+    
+  );
+}
 
-const ArticleCard = () => {
-  
-  const navigate = useNavigate();  
+function ArticleList() {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const response = await axios.get('https://back-end-production-643c.up.railway.app/article/');
+        setArticles(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchArticles();
+  }, []);  
 
   return (
     <>
-    <Card className="align-items-start card-layanan">
-      <Card.Img variant="top" src="https://img.freepik.com/free-vector/healthy-eating-plate-concept-illustration_114360-11823.jpg?size=626&ext=jpg&uid=R103942302&ga=GA1.2.1063005302.1686303953&semt=ais" fluid/>
-      <Card.Body>
-      <HeartIcon/>
-        <Card.Title className='judulcard'>Diet Tinggi Protein</Card.Title>
-        <p className='position-absolute bottom-0'><a class="link-opacity-100" onClick={() => navigate("/diet-satu")}>Selengkapnya...</a></p>
-      </Card.Body>
-    </Card>
-    
-    <Card className="align-items-start card-layanan">
-      <Card.Img className='card-img' variant="top" src="https://img.freepik.com/free-vector/healthy-eating-plate-concept-illustration_114360-12333.jpg?size=626&ext=jpg&ga=GA1.1.696200391.1683087027&semt=robertav1_2_sidr" />
-      <Card.Body>
-      <HeartIcon/>
-        <Card.Title className='judulcard'>Diet Mediterania</Card.Title>
-        <p className='position-absolute bottom-0'><a class="link-opacity-100" onClick={() => navigate("/diet-dua")}>Selengkapnya...</a></p>
-      </Card.Body>
-    </Card>
-
-    <Card className="align-items-start card-layanan">
-      <Card.Img className='card-img' variant="top" src="https://img.freepik.com/free-vector/food-nutritional-quality-illustration_335657-4622.jpg?size=626&ext=jpg&ga=GA1.1.696200391.1683087027&semt=robertav1_2_sidr" />
-      <Card.Body>
-      <HeartIcon/>
-        <Card.Title className='judulcard'>Diet Mayo</Card.Title>
-        <p className='position-absolute bottom-0'><a class="link-opacity-100" onClick={() => navigate("/diet-tiga")}>Selengkapnya...</a></p>
-      </Card.Body>
-    </Card>
-
-    <Card className="align-items-start card-layanan">
-      <Card.Img className='card-img' variant="top" src="https://img.freepik.com/free-vector/healthy-eating-plate-concept-illustration_114360-13382.jpg?size=626&ext=jpg&ga=GA1.1.696200391.1683087027&semt=robertav1_2_sidr" />
-      <Card.Body>
-      <HeartIcon/>
-        <Card.Title className='judulcard'>Diet Atkins</Card.Title>
-        <p className='position-absolute bottom-0'><a class="link-opacity-100" onClick={() => navigate("/diet-empat")}>Selengkapnya...</a></p>
-      </Card.Body>
-    </Card>
-
-    <Card className="align-items-start card-layanan">
-      <Card.Img className='card-img' variant="top" src="https://img.freepik.com/free-vector/healthy-food-concept-illustration_114360-12327.jpg?size=626&ext=jpg&ga=GA1.1.696200391.1683087027&semt=robertav1_2_sidr" />
-      <Card.Body>
-      <HeartIcon/>
-        <Card.Title className='judulcard'>Diet Protein Shake</Card.Title>
-        <p className='position-absolute bottom-0'><a class="link-opacity-100" onClick={() => navigate("/diet-lima")}>Selengkapnya...</a></p>
-      </Card.Body>
-    </Card>
+      <div className="d-flex flex-row">
+        {articles.map((article) => (
+          <ArticleCard key={article._id} article={article} />
+        ))}
+      </div>
     </>
   );
 };
 
-export default ArticleCard;
+export default ArticleList;

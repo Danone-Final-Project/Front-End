@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import ArticleCard from './articleCard';
+import ArticleList from './articleCard';
 
 const Article = () => {
   return (
@@ -22,8 +22,8 @@ const Article = () => {
         <div class='tengah-primary mb-1'>
           <h2>Rekomendasi Diet</h2>
         </div>
-        <div className='d-flex flex-row'>
-          <ArticleCard />
+        <div className='d-flex flex-row mb-2'>
+          <ArticleList />
         </div>
         
       </div>
