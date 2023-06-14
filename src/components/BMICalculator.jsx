@@ -76,7 +76,7 @@ function BMICalculator() {
               <h3 className='text-center fs-2 food-rec'>Food Recommendation</h3>
               <div className='d-flex flex-row justify-content-center mb-3'>
                 {foodItems.map((food, index) => (
-                  <Card className='card-makanan' key={index}>
+                  <Card className='card-makanan card-dimension' key={index}>
                     <Card.Img variant="top" src={food.img} fluid/>
                     <Card.Body>
                       <Card.Title className="fw-semibold mb-2">

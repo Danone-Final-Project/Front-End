@@ -1,6 +1,5 @@
 html, body{
   font-family: 'Poppins', sans-serif;
-  width: 100vw;
 }
 
 .mainNavbar{
@@ -93,7 +92,6 @@ html, body{
 }
 
 .text-center2 {
-  margin-bottom: 100px;
   font-weight: 600;
   font-size: 18px;
 }
@@ -287,6 +285,7 @@ section .title::after {
 
 .card-layanan {
   flex: 1;
+  height: auto;
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -299,8 +298,6 @@ section .title::after {
 
 .card-makanan {
   /* flex: 1; */
-  width: 18rem;
-  height: auto;
   display: flex;
   align-items: start;
   background-color: #fff;
@@ -309,6 +306,11 @@ section .title::after {
   /* overflow: hidden; */
   transition: box-shadow 0.3s ease;
   text-decoration: none;
+}
+
+.card-dimension{
+  width: 18rem;
+  height: auto;
 }
 
 .card-layanan:last-child {
