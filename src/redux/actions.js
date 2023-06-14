@@ -25,9 +25,6 @@ export const calculateBMI = async (height, weight) => {
       const response = await axios.get('https://back-end-production-643c.up.railway.app/food/', {
         params: {
           level: level
-        },
-        headers: {
-          'authuser': 'token'
         }
       });
       const food = response.data;
