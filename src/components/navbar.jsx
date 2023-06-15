@@ -22,7 +22,7 @@ function navBar() {
       <div>
         <Nav className='justify-content-center'>
           <Nav.Link><Link className='navlink' to="/login"><Button className='btn btn-outline-light login-btn'>Login</Button></Link></Nav.Link>
-          <Nav.Link><Link className='navlink' to="/login"><Button className='btn btn-light join-btn'>Join</Button></Link></Nav.Link>
+          <Nav.Link><Link className='navlink' to="/register"><Button className='btn btn-light join-btn'>Join</Button></Link></Nav.Link>
         </Nav>
       </div>
     </Navbar>
