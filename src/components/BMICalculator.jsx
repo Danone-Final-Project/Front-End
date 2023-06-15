@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { calculateBMI } from '../redux/actions';
+import { calculateBMI, fetchFoodRecommendation } from '../redux/actions';
 import Image from 'react-bootstrap/Image';
 import bmiImage from '../assets/img/BMI.png';
 import Form from 'react-bootstrap/Form';
 import { Button, Card } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 
 function BMICalculator() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const [bmi, setBMI] = useState('');
-  const [category, setCategory] = useState('');
-  const [recommendation, setRecommendation] = useState('');
+  const { bmi, category, recommendation } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   const handleHeightChange = (event) => {
     setHeight(event.target.value);
@@ -20,11 +20,12 @@ function BMICalculator() {
     setWeight(event.target.value);
   };
 
-  const handleCalculateBMI = async () => {
-    const { bmi: calculatedBMI, category: calculatedCategory, recommendation: calculatedRecommendation } = await calculateBMI(height, weight);
-    setBMI(calculatedBMI);
-    setCategory(calculatedCategory);
-    setRecommendation(calculatedRecommendation);
+  const handleCalculateBMI = () => {
+    dispatch(calculateBMI(height, weight));
+  };
+
+  const getFoodRecommendation = () => {
+    dispatch(fetchFoodRecommendation(category));
   };
 
   const isRecommendationValid = Array.isArray(recommendation) && recommendation.length > 0;
@@ -65,8 +66,9 @@ function BMICalculator() {
           <Form.Control type="text" value={weight} onChange={handleWeightChange} />
         </Form.Group>
       </Form>
-      <div className='d-flex flex-column justify-content-center align-items-center my-4'>
+      <div className='d-flex flex-column gap-2 justify-content-center align-items-center my-4'>
         <Button onClick={handleCalculateBMI}>Calculate BMI</Button>
+        <Button className='btn btn-light join-btn' onClick={getFoodRecommendation}>Food Recommendation</Button>
         {bmi && (
           <div className='d-flex flex-column justify-content-center align-items-center mt-3'>
             <p className='fw-semibold fs-3 m-0'>BMI: <span className='fw-bold' style={categoryStyle}>{bmi}</span></p>

@@ -1,53 +1,66 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const calculateBMI = async (height, weight) => {
-  if (height && weight) {
-    const heightInMeters = height / 100;
-    const bmiValue = weight / (heightInMeters * heightInMeters);
-    const roundedBMI = bmiValue.toFixed(2);
+export const calculateBMI = (height, weight) => {
+  return (dispatch) => {
+    const bmi = (weight / Math.pow(height / 100, 2)).toFixed(2);
+    const category = getBMICategory(bmi);
+    dispatch({
+      type: 'CALCULATE_BMI',
+      payload: {
+        bmi,
+        category
+      }
+    });
+  };
+};
 
-    let bmiCategory = '';
-    let level = '';
-    if (roundedBMI < 18.5) {
-      bmiCategory = 'Underweight';
-      level = 'high';
-    } else if (roundedBMI >= 18.5 && roundedBMI < 25) {
-      bmiCategory = 'Ideal';
-      level = 'medium';
-    } else {
-      bmiCategory = 'Overweight';
-      level = 'low';
-    }
-
-
-    let foodRecommendation = '';
-    try {
-      const response = await axios.get('https://back-end-production-643c.up.railway.app/food/', {
-        params: {
-          level: level
-        }
-      });
-      const food = response.data;
-      const filteredFood = food.filter(food => food.calLevel.level === level);
-      // console.log("success");
-      // console.log(filteredFood);
-      foodRecommendation = filteredFood;
-      // console.log(foodRecommendation);
-
-    } catch (error) {
-      console.log('Error fetching food recommendation:', error);
-    }
-
-    return {
-      bmi: roundedBMI,
-      category: bmiCategory,
-      recommendation: foodRecommendation
-    };
+const getBMICategory = (bmi) => {
+  if (bmi < 18.5) {
+    return 'Underweight';
+  } else if (bmi >= 18.5 && bmi < 25) {
+    return 'Ideal';
   } else {
-    return {
-      bmi: '',
-      category: '',
-      recommendation: ''
-    };
+    return 'Overweight';
   }
+};
+
+
+const categoryMap = (bmiCategory) => {
+  if (bmiCategory === 'Underweight') {
+    return 'high';
+  } else if (bmiCategory === 'Ideal') {
+    return 'medium';
+  } else if (bmiCategory === 'Overweight') {
+    return 'low';
+  }
+};
+
+export const fetchFoodRecommendation = (bmiCategory) => {
+  return (dispatch) => {
+    const calLevel = categoryMap(bmiCategory);
+    axios.get('https://back-end-production-643c.up.railway.app/food/')
+    .then((response) => {
+      const food = response.data;
+      const filterFood = food.filter(food => food.calLevel.level === calLevel);
+
+      dispatch(fetchFoodRecommendationSuccess(filterFood));
+    })
+    .catch((error) => {
+      dispatch(fetchFoodRecommendationError(error));
+    });
+  };
+};
+
+export const fetchFoodRecommendationSuccess = (recommendation) => {
+  return {
+    type: 'FETCH_FOOD_RECOMMENDATION_SUCCESS',
+    payload: recommendation
+  };
+};
+
+export const fetchFoodRecommendationError = (error) => {
+  return {
+    type: 'FETCH_FOOD_RECOMMENDATION_ERROR',
+    payload: error
+  };
 };
