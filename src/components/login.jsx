@@ -1,12 +1,11 @@
-
-
+import { Link } from "react-router-dom";
 import Loginfoto from "./../../images/login-image.png"
 
 function Login (){
   return(
     <div>
-      <div class="container d-flex justify-content-center align-items-center min-vh-100">
-      <div class="row rounded-4 p-4 bg-white shadow box-area my-3 mx-1">
+      <div class="container d-flex justify-content-center align-items-center min-vh-100 my-3">
+      <div class="d-flex rounded-4 p-4 bg-white shadow box-area my-3 mx-1">
         <div class="col-md-6 bg-blue rounded-3 text-white p-4 d-flex justify-content-end align-items-center flex-column left-box col-sm-0">
         <img src={Loginfoto} alt="" class="img-fluid" />
         </div>
@@ -40,9 +39,9 @@ function Login (){
             </button>
           </div>
           <hr class="hr hr-blurry" />
-          <div class="row">
+          <div class="row justify-content-center">
             <small class="text-center">
-              Belum punya akun? <a href="register.html" class="link-underline link-underline-opacity-0">Daftar</a>.
+              Belum punya akun? <Link to="/register" class="link-underline link-underline-opacity-0">Daftar</Link>.
             </small>
           </div>
         </div>

@@ -19,6 +19,7 @@ form {
 
 .left-box {
   background: url("loginimage.png");
+  background-color: #0081C9;
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: -270px;

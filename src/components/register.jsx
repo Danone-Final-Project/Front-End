@@ -1,20 +1,21 @@
 import React from 'react'
 import "./../login.css"
 import Registerfoto from "./../../images/register.png"
+import { Link } from 'react-router-dom'
 
 function register() {
     return(
     <div>
-        <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="row rounded-4 p-4 bg-white shadow box-area my-3 mx-1 flex-row-reverse">
+        <div class="container d-flex justify-content-center align-items-center min-vh-100 my-3">
+        <div class="d-flex rounded-4 p-4 bg-white shadow box-area my-3 mx-1 flex-row-reverse">
         <div
-        class="col-md-6 bg-blue rounded-3 text-white p-4 d-flex justify-content-end align-items-center flex-column left-box col-sm-0"
+        class="col-md-6 bg-blue rounded-3 text-white p-4 d-flex justify-content-center align-items-center flex-column left-box col-sm-0 ms-3"
         >
         <img src={Registerfoto} alt="" class="img-fluid" />
         
         </div>
 
-        <div class="col-md-6 right-box col-sm-12">
+        <div class="col-md-6 right-box col-sm-12 me-3">
         <h3 class="fw-bold text-purple">Dcare</h3>
         <h4 class="my-3 fw-semibold text-slate-500">Bergabung bersama kami</h4>
         <p class="text-slate-400">Buat akun untuk mengakses fitur-fitur kami.</p>
@@ -89,9 +90,9 @@ function register() {
             </button>
           </div>
           <hr class="hr hr-blurry" />
-          <div class="row">
+          <div class="row justify-content-center">
             <small class="text-center">
-              Sudah punya akun? <a href="login.html" class="link-underline link-underline-opacity-0">Masuk</a>
+              Sudah punya akun? <Link to="/login" class="link-underline link-underline-opacity-0">Masuk</Link>
             </small>
           </div>
         </div>
