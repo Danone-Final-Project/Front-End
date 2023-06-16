@@ -5,7 +5,8 @@ import thunk from 'redux-thunk';
 const initialState = {
   bmi: '',
   category: '',
-  recommendation: ''
+  recommendation: '',
+  loggedIn: 'false'
 };
 
 const store = createStore(reducer, initialState, applyMiddleware(thunk));

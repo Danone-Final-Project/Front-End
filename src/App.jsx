@@ -1,18 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Home from './components/home';
 import Article from './components/article';
-// import DietSatu from '../src/components/DietSatu';
-// import DietDua from '../src/components/DietDua';
-// import DietTiga from '../src/components/DietTiga';
-// import DietEmpat from '../src/components/DietEmpat';
-// import DietLima from '../src/components/DietLima';
 import Login from './components/login';
 import Register from './components/register';
 import BMICalculator from './components/BMICalculator';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './homepage.css';
 import './style.css';
 import "./login.css"
 import Footer from './components/footer';
@@ -21,21 +15,25 @@ import ArticleContent from './components/articleContent';
 
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <div>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/bmi' element={<BMICalculator />} />
           <Route path='/article' element={<Article />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login handleLogin={handleLogin} />} />
           <Route path='/register' element={<Register />} />
           <Route path="/article/:id" element={<ArticleContent />} />
-          {/* <Route path="/diet-satu" element={<DietSatu />} />
-          <Route path="/diet-dua" element={<DietDua />} />
-          <Route path="/diet-tiga" element={<DietTiga />} />
-          <Route path="/diet-empat" element={<DietEmpat />} />
-          <Route path="/diet-lima" element={<DietLima />} /> */}
         </Routes>
       <Footer />
     </div>
