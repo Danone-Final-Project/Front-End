@@ -148,7 +148,7 @@ section .title::after {
 /* beranda section styling */
 .home {
   display: flex;
-  background: url("banner.jpg") no-repeat center;
+  background: url("../banner.jpg") no-repeat center;
   background-color: #fff;
   height: 100vh;
   color: #CFEEFF;

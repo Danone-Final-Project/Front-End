@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import fotoBMI from "./../../images/fotoBMI.png"
 
 function Layanan (){
   return(
@@ -9,7 +10,7 @@ function Layanan (){
         <div>
           <Link className='navlink' to="/bmi">
             <a href="bmi.html" className="card-layanan">
-              <img src="images/fotoBMI.png" alt="Kalkulator BMI" />
+              <img src={fotoBMI} alt="Kalkulator BMI" />
               <div className="content">
                 <h2>Kalkulator BMI</h2>
                 <p>Tentukan kategori tubuhmu berdasarkan tinggi dan berat badan.</p>
