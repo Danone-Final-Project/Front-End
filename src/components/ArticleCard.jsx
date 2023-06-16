@@ -37,7 +37,6 @@ function ArticleList() {
       try {
         const response = await axios.get('https://back-end-production-643c.up.railway.app/article/');
         setArticles(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }

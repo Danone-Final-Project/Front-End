@@ -4,6 +4,7 @@ import Registerfoto from "./../../images/register.png"
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import { Alert } from 'react-bootstrap'
 
 function register() {
   const [email, setEmail] = useState('');
@@ -50,18 +51,15 @@ function register() {
       });
 
       if (response.status === 200){
-        console.log('success');
         navigate('/login');
         setError("");
       }
       else{
         setError("Registration Failed. Please try again!");
-        console.log('fail');
       }
     }
     catch(error){
       setError("Registration Failed. Please try again!");
-      console.log(error);
     }
   };
 
@@ -73,7 +71,9 @@ function register() {
           <img src={Registerfoto} alt="" class="img-fluid" />
         </div>
         <div class="col-md-6 right-box col-sm-12 me-3">
-          <h3 class="fw-bold text-purple">Dcare</h3>
+          <Link className='homelink' to='/'>
+            <h3 class="fw-bold text-purple">Dcare</h3>
+          </Link>
           <h4 class="my-3 fw-semibold text-slate-500">Bergabung bersama kami</h4>
           <p class="text-slate-400">Buat akun untuk mengakses fitur-fitur kami.</p>
           <form class="text-slate-500" id="registerForm" onSubmit={handleSubmit}>
@@ -104,7 +104,7 @@ function register() {
             <div class="mb-3">
               <label for="password" class="form-label">Confirm Password</label>
               <input type="password" class="form-control" id="conf-password" placeholder="" onChange={handlePasswordConfirmChange} required />
-              {error && <div>{error}</div>}
+              {error && <Alert variant='danger' className='mt-2'>{error}</Alert>}
             </div>
             <div class="mb-3">
               <div class="form-check">
@@ -132,7 +132,7 @@ function register() {
             </div>
             <div id="notif"></div>
             <div class="d-grid">
-              <button class="btn btn-purple" type="submit" id="register">Daftar</button>
+              <button class="btn btn-primary" type="submit" id="register">Daftar</button>
             </div>
           </form>       
           <div class="d-flex justify-content-center align-items-center or my-2">

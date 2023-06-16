@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loginfoto from "./../../images/login-image.png"
 import { useState } from "react";
 import axios from "axios";
+import { Alert } from "react-bootstrap";
 
 function Login ({handleLogin}){
 
@@ -26,19 +27,16 @@ function Login ({handleLogin}){
       });
 
       if (response.status === 200){
-        console.log('success');
         setError("");
         handleLogin();
         navigate('/');
       }
       else{
         setError("Login Failed. Please try again!");
-        console.log('fail');
       }
     }
     catch(error){
       setError("Login Failed. Please try again!");
-      console.log('error')
     }
   };
 
@@ -51,10 +49,11 @@ function Login ({handleLogin}){
             <img src={Loginfoto} alt="" class="img-fluid" />
           </div>
           <div class="col-md-6 right-box col-sm-12">
-            <h3 class="fw-bold text-purple">Dcare</h3>
+            <Link className="homelink" to='/'>
+              <h3 class="fw-bold text-purple">D'care</h3>
+            </Link>
             <h4 class="my-3 fw-semibold text-slate-500">Hello, Pengguna</h4>
             <p class="text-slate-400">Selamat datang, silahkan login untuk melanjutkan.</p>
-            {error && <div>{error}</div>}
             <form id="loginForm" class="text-slate-500" onSubmit={handleSubmit}>
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -63,10 +62,11 @@ function Login ({handleLogin}){
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Password" onChange={handlePasswordChange} required />
+                {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
               </div>
               <div id="notif"></div>
               <div class="d-grid">
-                <button class="btn btn-purple" id="login" type="submit">Masuk</button>
+                <button class="btn btn-primary" id="login" type="submit">Masuk</button>
               </div>
             </form>
             <div class="d-flex justify-content-center align-items-center or my-2">

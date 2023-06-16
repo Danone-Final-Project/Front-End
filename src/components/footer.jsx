@@ -1,4 +1,14 @@
+import { Link, useLocation } from "react-router-dom";
+
 function Footer (){
+
+    const location = useLocation()
+    const hiddenPaths = ['/login', '/register'];
+    const hideFooter = hiddenPaths.includes(location.pathname)
+    if (hideFooter){
+    return null;
+    }
+
     return(
         <footer>
         <div className="column left"> 
@@ -9,10 +19,9 @@ function Footer (){
             <div className="footer-container">
                 <div className="footer-heading footer-1">
                     <h2>Navigasi</h2>
-                    <a href="#">Beranda</a>
-                    <a href="#">Body Mass Index</a>
-                    <a href="#">Kalkulator BMI</a>
-                    <a href="#">Kalkulator BMR</a>
+                    <Link to='/'>Beranda</Link>
+                    <Link to='/bmi'>Kalkulator BMI</Link>
+                    <Link to='/article'>Article</Link>
                 </div>
                 <div className="footer-heading footer-2">
                     <h2>Komunitas</h2>

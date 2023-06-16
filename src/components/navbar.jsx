@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button, Dropdown, DropdownButton, NavDropdown } from 'react-bootstrap';
+import { Button, NavDropdown } from 'react-bootstrap';
 
 function navBar({isLoggedIn, handleLogout}) {
 
-  // const [dropDown, setDropDown] = useState(false);
-  // const toggleDropdown = () => {
-  //   setDropDown(!dropDown);
-  // };
+  const location = useLocation()
+  const hiddenPaths = ['/login', '/register'];
+  const hideNavbar = hiddenPaths.includes(location.pathname)
+  if (hideNavbar){
+    return null;
+  }
 
   return (
     <Navbar className='justify-content-between px-5 mainNavbar'>
