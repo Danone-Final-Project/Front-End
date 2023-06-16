@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import ArticleList from './articleCard';
+import ArticleList from './ArticleCard';
 
 const Article = () => {
   return (

@@ -1,5 +1,5 @@
 import About from "./about";
-import ArticleList from "./articleCard";
+import ArticleList from "./ArticleCard";
 import Hero from "./hero";
 import Layanan from "./layanan";
 
